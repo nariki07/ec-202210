@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+title {
+  width: 600px;
+  height: 100px;
+  background-color: gray;
+  
+  
+}
+
+.contactForm-btn {
+  text-align: center;
+}

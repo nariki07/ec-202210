@@ -1,0 +1,10 @@
+-- お問合せ
+create table contacts (
+ id serial primary key
+ , name varchar(100) not null
+ ,fullName varchar(100) not null
+ , mailAddress varchar(100) not null unique
+ , telephone text not null
+ , gender text not null
+ , inquiryDetails varchar(500) not null
+) ;
