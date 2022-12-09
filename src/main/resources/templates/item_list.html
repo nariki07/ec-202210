@@ -61,7 +61,8 @@
 	<!-- search form -->
 	<div class="search-wrapper">
 		<div class="container">
-			<form method="post" th:action="@{/}" class="search-form">
+			<form method="post" th:action="@{/serchItem}" class="search-form">
+			<span th:text="${result}">該当する商品がありません</span> 
 				<input type="text" name="name" class="search-name-input" list="itemList" />
 				<datalist id="itemList">
 				<option th:each="item:${itemList}" th:value="${item.name}"></option>
