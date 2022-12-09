@@ -38,7 +38,7 @@
         <div class="header">
           <div class="header-left">
 					  <a th:href="@{/}">
-					   <img class="logo" th:src="@{/img/header_logo.png}" />
+					   <img class="logo" th:src="@{/img_toy/header_logo.png}" />
             </a>
           </div>
 
@@ -67,7 +67,7 @@
         <div class="row">
           <div class="row item-detail">
             <div class="item-icon">
-              <img src="img/1.jpg" th:src="@{/img/}+${item.imagePath}" />
+              <img src="img/1.jpg" th:src="@{/img_toy/}+${item.imagePath}" />
             </div>
             <div class="item-intro" th:text="${item.description}">
               ハワイで取れる名産物でかつオーガニックな食料がふんだんに使われたローカルフーズです。健康志向の方に大人気の商品です。
@@ -157,7 +157,7 @@
     <!-- end top-wrapper -->
     <footer>
       <div class="container">
-        <img th:src="@{/img/header_logo.png}" />
+        <img th:src="@{/img_toy/header_logo.png}" />
         <p>ホッと一息できるひとときを、あなたに！</p>
       </div>
     </footer>
