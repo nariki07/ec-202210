@@ -117,7 +117,8 @@
  --><!--           <div th:text="'ご注文合計金額 '+${#numbers.formatInteger(order.getCalcTotalPrice,1,'COMMA')}+' 円'">ご注文金額合計：38,000円 (税込)</div>
  -->        </div>
         <div class="row order-confirm-btn">
-        <form th:action="@{/order/toOrder}">
+        <form th:action="@{/order/orderConfirm}">
+         <input type="hidden" th:value="${order.id}" name="orderId">
           <button
             class="btn"
           >

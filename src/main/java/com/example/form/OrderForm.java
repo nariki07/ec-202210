@@ -1,50 +1,60 @@
 package com.example.form;
 
-import java.sql.Timestamp;
+import java.sql.Date;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 /**
- * 注文時に使うフォーム.
+ * 注文情報を受け取るフォーム.
  * 
- * @author Hirabuki
+ * @author inagakisaia
  *
  */
 public class OrderForm {
 
+	/** ID */
+	private String id;
+	/** 注文日 */
+	private Date orderDate;
 	/** 宛先氏名 */
+	@NotBlank(message = "名前を入力してください")
 	private String destinationName;
 	/** 宛先Eメール */
+	@NotBlank(message="メールアドレスを入力してください")
+	@Email(message="メールアドレスの形式が不正です")
 	private String destinationEmail;
 	/** 宛先郵便番号 */
+	@Pattern(regexp="^[0-9]{3}-[0-9]{4}$",message="郵便番号はXXX-XXXXの形式で入力してください")
 	private String destinationZipcode;
 	/** 宛先住所 */
+	@NotBlank(message="住所を入力してください")
 	private String destinationAddress;
 	/** 宛先TEL */
-	private String distinationTel;
-	/** 配達日 */
-	private String deliveryDate;
+	@Pattern(regexp="^\\d{2,4}-\\d{2,4}-\\d{4}$",message="電話番号は-を含んで正しい入力をしてください")
+	private String destinationTel;
+	/** 配達日付 */
+	private Date deliveryDate;
 	/** 配達時間 */
-	private String deliveryTime;
+	private Integer deliveryTime;
 	/** 支払い方法 */
 	private String paymentMethod;
-	/** オーダーID */
-	private String orderId;
-	/** クレジットカード番号 */
-	private String card_number;
-	/** 有効期限（月） */
-	private String card_exp_month;
-	/** 有効期限（年） */
-	private String card_exp_year;
-	/** クレジットカード名義人 */
-	private String card_name;
-	/** セキュリティコード */
-	private String card_cvv;
 
-	public int getIntPaymentMethod() {
-		return Integer.parseInt(paymentMethod);
+	public String getId() {
+		return id;
 	}
 
-	public int getIntOrderId() {
-		return Integer.parseInt(orderId);
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public Date getOrderDate() {
+		return orderDate;
+	}
+
+	public void setOrderDate(Date orderDate) {
+		this.orderDate = orderDate;
 	}
 
 	public String getDestinationName() {
@@ -79,27 +89,27 @@ public class OrderForm {
 		this.destinationAddress = destinationAddress;
 	}
 
-	public String getDistinationTel() {
-		return distinationTel;
+	public String getDestinationTel() {
+		return destinationTel;
 	}
 
-	public void setDistinationTel(String distinationTel) {
-		this.distinationTel = distinationTel;
+	public void setDestinationTel(String destinationTel) {
+		this.destinationTel = destinationTel;
 	}
 
-	public String getDeliveryDate() {
+	public Date getDeliveryDate() {
 		return deliveryDate;
 	}
 
-	public void setDeliveryDate(String deliveryDate) {
+	public void setDeliveryDate(Date deliveryDate) {
 		this.deliveryDate = deliveryDate;
 	}
 
-	public String getDeliveryTime() {
+	public Integer getDeliveryTime() {
 		return deliveryTime;
 	}
 
-	public void setDeliveryTime(String deliveryTime) {
+	public void setDeliveryTime(Integer deliveryTime) {
 		this.deliveryTime = deliveryTime;
 	}
 
@@ -107,80 +117,17 @@ public class OrderForm {
 		return paymentMethod;
 	}
 
-	public Integer intGetPaymentMethod() {
-		return Integer.parseInt(paymentMethod);
-	}
-
 	public void setPaymentMethod(String paymentMethod) {
 		this.paymentMethod = paymentMethod;
 	}
 
-	public String getOrderId() {
-		return orderId;
-	}
-
-	public Integer intGetOrderId() {
-		return Integer.parseInt(orderId);
-	}
-
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
-	}
-
-	public String getCard_number() {
-		return card_number;
-	}
-
-	public void setCard_number(String card_number) {
-		this.card_number = card_number;
-	}
-
-	public String getCard_exp_month() {
-		return card_exp_month;
-	}
-
-	public void setCard_exp_month(String card_exp_month) {
-		this.card_exp_month = card_exp_month;
-	}
-
-	public String getCard_exp_year() {
-		return card_exp_year;
-	}
-
-	public void setCard_exp_year(String card_exp_year) {
-		this.card_exp_year = card_exp_year;
-	}
-
-	public String getCard_name() {
-		return card_name;
-	}
-
-	public void setCard_name(String card_name) {
-		this.card_name = card_name;
-	}
-
-	public String getCard_cvv() {
-		return card_cvv;
-	}
-
-	public void setCard_cvv(String card_cvv) {
-		this.card_cvv = card_cvv;
-	}
-
-	public Timestamp getDeliveryTimestamp() {
-		String str = deliveryDate + " " + deliveryTime + ":00:00";
-		Timestamp timestamp = Timestamp.valueOf(str);
-
-		return timestamp;
-	}
-
 	@Override
 	public String toString() {
-		return "OrderForm [destinationName=" + destinationName + ", destinationEmail=" + destinationEmail
-				+ ", destinationZipcode=" + destinationZipcode + ", destinationAddress=" + destinationAddress
-				+ ", distinationTel=" + distinationTel + ", deliveryDate=" + deliveryDate + ", deliveryTime="
-				+ deliveryTime + ", paymentMethod=" + paymentMethod + ", orderId=" + orderId + ", card_number="
-				+ card_number + ", card_exp_month=" + card_exp_month + ", card_exp_year=" + card_exp_year
-				+ ", card_name=" + card_name + ", card_cvv=" + card_cvv + "]";
+		return "OrderForm [id=" + id + ", orderDate=" + orderDate + ", destinationName=" + destinationName
+				+ ", destinationEmail=" + destinationEmail + ", destinationZipcode=" + destinationZipcode
+				+ ", destinationAddress=" + destinationAddress + ", destinationTel=" + destinationTel
+				+ ", deliveryDate=" + deliveryDate + ", deliveryTime=" + deliveryTime + ", paymentMethod="
+				+ paymentMethod + "]";
 	}
+
 }
