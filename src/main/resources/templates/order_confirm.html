@@ -70,7 +70,7 @@
 					</thead>
 					<tbody>
 					<tbody>
-						<tr th:each="orderItem : ${order.orderItemList}">
+						<tr th:each="orderItem : ${session.order.orderItemList}">
 							<td class="cart-item-name">
 								<div class="cart-item-icon">
 									<img src="img/1.jpg"
@@ -96,7 +96,7 @@
 							</td>
 							<!-- <td><div class="text-center" th:text="'小計　'+${#numbers.formatInteger(orderItem.getSubTotal,1,'COMMA')}+' 円'">3,280円</div></td> -->
 							<td>
-								<form th:action="@{/cart/deleteOrderItem}" method="post">
+								<form th:action="@{/shopCart/deleteItem}" method="post">
 									<button class="btn" type="submit">
 										<span>削除</span>
 									</button>
@@ -119,7 +119,7 @@
 			</form>
 			<form action="order_finished.html" th:action="@{/order}"
 				method="post" th:object="${orderForm}">
-				<input type="hidden" name="orderId" th:value="${order.id}">
+				<input type="hidden" name="orderId" th:value="${session.order.id}">
 				<div class="order-confirm-delivery-info">
 					<div class="row">
 						<div class="input-field">

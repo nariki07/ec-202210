@@ -81,8 +81,12 @@ public class ShopCartController {
 	 * @return
 	 */
 	@PostMapping("/deleteItem")
-	private String deleteItem(Integer orderItemId) {
+	private String deleteItem(Integer orderItemId,String toOrderConfirm) {
 		shopCartService.deleteItem(orderItemId);
+		
+		if(toOrderConfirm.equals("toOrderConfirm")) {
+			return "redirect:/order/orderConfirm";
+		}
 		return "redirect:/shopCart/showCartList";
 	}
 }
