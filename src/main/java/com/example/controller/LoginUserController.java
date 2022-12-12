@@ -54,7 +54,6 @@ public class LoginUserController {
 	@PostMapping("/loginUser")
 	public String login(LoginUserForm form,Model model) {
 		
-		System.out.println(form.toString());
 		//フォームで受け取ったemailとパスワードで検索をかける。
 		User user = loginUserService.login(form.getEmail(), form.getPassword());
 		
