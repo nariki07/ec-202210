@@ -63,8 +63,6 @@ public class LoginUserController {
 		}
 		
 		session.setAttribute("user", user);
-		String userName = user.getName();
-		session.setAttribute("userName", userName);
 		
 		/*
 		 * //sessionに入っている仮のユーザーIDでオーダー情報を取得。 Order order =

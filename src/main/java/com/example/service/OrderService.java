@@ -48,14 +48,13 @@ public class OrderService {
 				localDate.getDayOfMonth(), orderForm.getDeliveryTime(), 0, 0, 0);
 		Timestamp timestamp = Timestamp.valueOf(localDateTime);
 		order.setDeliveryTime(timestamp);
-    
+		
 		//決済方法によってステータスを変更
 		if(orderForm.getPaymentMethod().equals("1")) {
 			order.setStatus(1);
 		}else if(orderForm.getPaymentMethod().equals("2")) {
 			order.setStatus(2);
 		}
-		
 		orderRepository.update(order);
 	}
 

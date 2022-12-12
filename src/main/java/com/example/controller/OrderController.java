@@ -84,6 +84,7 @@ public class OrderController {
 		}
 		
 		orderService.order(orderForm);
+		
 		return "order_finished";
 	}
 }

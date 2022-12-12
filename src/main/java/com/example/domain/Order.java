@@ -31,7 +31,7 @@ public class Order {
 	/** 宛先住所 */
 	private String destinationAddress;
 	/** 宛先TEL */
-	private String distinationTel;
+	private String destinationTel;
 	/** 配達時間 */
 	private Timestamp deliveryTime;
 	/** 支払い方法 */
@@ -113,12 +113,12 @@ public class Order {
 		this.destinationAddress = destinationAddress;
 	}
 
-	public String getDistinationTel() {
-		return distinationTel;
+	public String getDestinationTel() {
+		return destinationTel;
 	}
 
-	public void setDistinationTel(String distinationTel) {
-		this.distinationTel = distinationTel;
+	public void setDestinationTel(String destinationTel) {
+		this.destinationTel = destinationTel;
 	}
 
 	public Timestamp getDeliveryTime() {
@@ -185,7 +185,7 @@ public class Order {
 		return "Order [id=" + id + ", userId=" + userId + ", status=" + status + ", totalPrice=" + totalPrice
 				+ ", orderDate=" + orderDate + ", destinationName=" + destinationName + ", destinationEmail="
 				+ destinationEmail + ", destinationZipcode=" + destinationZipcode + ", destinationAddress="
-				+ destinationAddress + ", distinationTel=" + distinationTel + ", deliveryTime=" + deliveryTime
+				+ destinationAddress + ", destinationTel=" + destinationTel + ", deliveryTime=" + deliveryTime
 				+ ", paymentMethod=" + paymentMethod + ", user=" + user + ", orderItemList=" + orderItemList + "]";
 	}
 

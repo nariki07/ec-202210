@@ -59,7 +59,7 @@ public class OrderRepository {
 				order.setDestinationEmail(rs.getString("o_destination_email"));
 				order.setDestinationZipcode(rs.getString("o_destination_zipcode"));
 				order.setDestinationAddress(rs.getString("o_destination_address"));
-				order.setDistinationTel(rs.getString("o_destination_tel"));
+				order.setDestinationTel(rs.getString("o_destination_tel"));
 				order.setDeliveryTime(rs.getTimestamp("o_delivery_time"));
 				order.setPaymentMethod(rs.getInt("o_payment_method"));
 				// 空のオーダーアイテムリストを作成しオーダーオブジェクトにセットしておく
@@ -132,14 +132,14 @@ public class OrderRepository {
 		SqlParameterSource param = new BeanPropertySqlParameterSource(order);
 		if (order.getId() == null) {
 			String sql = "insert into orders(user_id,status,total_price,order_date,destination_name,destination_email,destination_zipcode,destination_address,destination_tel,delivery_time,payment_method)"
-					+ "values(:userId,:status,:totalPrice,:orderDate,:destinationName,:destinationEmail,:destinationZipcode,:destinationAddress,:distinationTel,:deliveryTime,:paymentMethod);";
+					+ "values(:userId,:status,:totalPrice,:orderDate,:destinationName,:destinationEmail,:destinationZipcode,:destinationAddress,:destinationTel,:deliveryTime,:paymentMethod);";
 			KeyHolder keyHolder = new GeneratedKeyHolder();
 			String[] keyColumnNames = { "id" };
 			template.update(sql, param, keyHolder, keyColumnNames);
 			order.setId(keyHolder.getKey().intValue());
 		} else {
 			String sql = "insert into orders(user_id,status,total_price,order_date,destination_name,destination_email,destination_zipcode,destination_address,destination_tel,delivery_time,payment_method)"
-					+ "values(:userId,:status,:totalPrice,:orderDate,:destinationName,:destinationEmail,:destinationZipcode,:destinationAddress,:distinationTel,:deliveryTime,:paymentMethod);";
+					+ "values(:userId,:status,:totalPrice,:orderDate,:destinationName,:destinationEmail,:destinationZipcode,:destinationAddress,:destinationTel,:deliveryTime,:paymentMethod);";
 			template.update(sql, param);
 		}
 
@@ -236,7 +236,7 @@ public class OrderRepository {
 		updateSqlBuilder.append(
 				"order_date=:orderDate, destination_name=:destinationName, destination_email=:destinationEmail, ");
 		updateSqlBuilder.append("destination_zipcode=:destinationZipcode, destination_address=:destinationAddress, ");
-		updateSqlBuilder.append("destination_tel=:distinationTel, delivery_time=:deliveryTime, payment_method=:paymentMethod ");
+		updateSqlBuilder.append("destination_tel=:destinationTel, delivery_time=:deliveryTime, payment_method=:paymentMethod ");
 		updateSqlBuilder.append("WHERE id=:id");
 		template.update(updateSqlBuilder.toString(), param);
 	}
