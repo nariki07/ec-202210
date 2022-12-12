@@ -47,10 +47,10 @@
 
 					</i>カート  <span th:text="${session.orderItemCount}"></span>
 					</a> 
-					 <span th:unless="${session.user}"><a th:href="@{/loginUser/toLogin}" class="login"> <i
+					 <span th:unless="${session.user}"><a th:href="@{/login/}" class="login"> <i
 						  class="fas fa-sign-in-alt"></i>ログイン</a> 
 				     </span>
-					<span th:if="${session.user}"> <a th:href="@{/logoutUser/logout}">ログアウト</a>
+					<span th:if="${session.user}"> <a th:href="@{/logout}">ログアウト</a>
             　　　　　　　</span>
             <a th:href="@{/orderHistory/}">注文履歴</a>
 					<span th:if="${session.userName}" th:text="${session.userName} + 'さんこんにちは'">山田太郎</span>
