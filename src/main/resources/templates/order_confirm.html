@@ -37,8 +37,8 @@
 				</div>
 
 				<div class="header-right">
-					<a th:href="@{/}">商品一覧</a> <a th:href="@{/insertUser/toInsert}">会員登録</a>
-					<a th:href="@{/cart/showCart#}"><i class="fas fa-shopping-cart"></i>カート
+					<a th:href="@{/}">商品一覧</a> <a th:href="@{/insertUser/}">会員登録</a>
+					<a th:href="@{/shopCart/showCartList}"><i class="fas fa-shopping-cart"></i>カート
 						<span th:text="${session.orderItemCount}"></span></a> <span
 						th:unless="${session.user}"> <a
 						th:href="@{/login/}" class="login"> <i
@@ -58,6 +58,8 @@
 		<div class="container">
 			<h1 class="page-title">注文内容確認</h1>
 			<!-- table -->
+			<span th:if="${NoOrder}" th:text="${NoOrder}">カートの中身は空です。</span>
+			<div th:unless="${NoOrder}">
 			<div class="row">
 				<table class="striped">
 					<thead>
@@ -94,7 +96,7 @@
 										th:text="${orderTopping.topping.name+' 300円'}"></li>
 								</ul>
 							</td>
-							<!-- <td><div class="text-center" th:text="'小計　'+${#numbers.formatInteger(orderItem.getSubTotal,1,'COMMA')}+' 円'">3,280円</div></td> -->
+							<td><div class="text-center" th:text="${#numbers.formatInteger(orderItem.getSubTotal,1,'COMMA')}+' 円'">3,280円</div></td>
 							<td>
 								<form th:action="@{/shopCart/deleteItem}" method="post">
 									<button class="btn" type="submit">
@@ -107,7 +109,8 @@
 						</tr>
 					</tbody>
 				</table>
-			</div>
+				</div>
+			
 			<div class="row cart-total-price">
 				<!-- <div th:text="'消費税 '+${#numbers.formatInteger(order.getTax,1,'COMMA')}+' 円'" >消費税：8,000円</div> -->
 				<!-- <div th:text="'ご注文合計金額 '+${#numbers.formatInteger(order.getCalcTotalPrice,1,'COMMA')}+' 円'">ご注文金額合計：38,000円 (税込)</div> -->
@@ -220,6 +223,7 @@
 						この内容で注文する</button>
 				</div>
 			</form>
+			</div>
 		</div>
 
 

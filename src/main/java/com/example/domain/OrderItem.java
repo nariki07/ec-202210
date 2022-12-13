@@ -19,7 +19,7 @@ public class OrderItem {
 	/** 数量 */
 	private Integer quantity;
 	/** サイズ */
-	private String size; //ローマッパーでcharcter型が受け取れなかったため一旦string型に変更.
+	private String size; // ローマッパーでcharcter型が受け取れなかったため一旦string型に変更.
 	/** 商品 */
 	private Item item;
 	/** 注文商品ID */
@@ -79,6 +79,30 @@ public class OrderItem {
 
 	public void setOrderToppingList(List<OrderTopping> orderToppingList) {
 		this.orderToppingList = orderToppingList;
+	}
+
+	public int getSubTotal() {
+
+		int subTotal = 0;
+		int oneTotal = 0;
+		List<OrderTopping> orderToppingList = null;
+		if (this.getSize().equals("M")) {
+			oneTotal += this.getItem().getPriceM();
+			orderToppingList = this.getOrderToppingList();
+			for (OrderTopping orderTopping : orderToppingList) {
+				oneTotal += orderTopping.getTopping().getPriceM();
+			}
+			subTotal += oneTotal * this.quantity;
+		} else if (this.getSize().equals("L")) {
+			oneTotal += this.getItem().getPriceL();
+			orderToppingList = this.getOrderToppingList();
+			for (OrderTopping orderTopping : orderToppingList) {
+				oneTotal += orderTopping.getTopping().getPriceL();
+			}
+			subTotal += oneTotal * this.quantity;
+		}
+		return subTotal;
+
 	}
 
 	@Override

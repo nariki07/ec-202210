@@ -37,23 +37,27 @@ public class ShopCartController {
 	 * @return
 	 */
 	@GetMapping("/showCartList")
-	private String showCartList(Model model,User user) {
-
+	private String showCartList(Model model) {
+		User user = (User)session.getAttribute("user");
 		Order order = null;
 		Integer userId = (Integer)session.getAttribute("userId");
 		
-		if (user != null) {
+		if ( user != null) {
 			order = shopCartService.showCartList(user.getId());
 		} else {
 			order = shopCartService.showCartList(userId);
 		}
-
+		
+		if (order.getOrderItemList().isEmpty()) {
+			model.addAttribute("NoOrder", "カート内は空です。");
+		} else {
+			model.addAttribute("order", order);
+		}
 		/*
 		 * double tax = order.getCalcTotalPrice(); tax = tax / 1.1; tax = tax * 0.1;
 		 * model.addAttribute("order", order); model.addAttribute("tax", tax);
 		 * model.addAttribute("totalPrice", order.getCalcTotalPrice());
 		 */
-		model.addAttribute("order", order);
 		return "cart_list";
 	}
 
@@ -71,7 +75,7 @@ public class ShopCartController {
 		insertCartForm.setSize(insertCartForm.getSize());
 		insertCartForm.setToppingList(insertCartForm.getToppingList());
 		shopCartService.insertItem(insertCartForm, user);
-		return showCartList(model,  user);
+		return showCartList(model);
 	}
 
 	/**
@@ -82,6 +86,7 @@ public class ShopCartController {
 	 */
 	@PostMapping("/deleteItem")
 	private String deleteItem(Integer orderItemId,String toOrderConfirm) {
+		System.out.println("オーダーアイテムIDは" + orderItemId);
 		shopCartService.deleteItem(orderItemId);
 		
 		if(toOrderConfirm.equals("toOrderConfirm")) {

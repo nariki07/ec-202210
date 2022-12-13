@@ -45,11 +45,10 @@
 
           <div class="header-right">
             <a th:href="@{/}">商品一覧</a>
-            <a th:href="@{/insertUser/toInsert}">会員登録</a>
+            <a th:href="@{/insertUser/}">会員登録</a>
             <a th:href="@{/login/}" class="login">
               <i class="fas fa-sign-in-alt"></i>ログイン
             </a>
-            <a th:href="@{/contact/InsertContact}">お問合わせ</a>
           </div>
         </div>
       </div>
@@ -111,7 +110,7 @@
               th:field="*{zipcode}"
               maxlength="8" />
               <label for="zipcode">郵便番号(ハイフン含む)</label>
-              <button id="get_address_btn" 
+              <button id="zipcode_btn" 
               type="button" >
                 <span>住所検索</span>
               </button>

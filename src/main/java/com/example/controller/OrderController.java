@@ -51,23 +51,8 @@ public class OrderController {
 	@PostMapping("")
 	public String order(@Validated OrderForm orderForm, BindingResult result, Model model, String orderId) {
 		
-		System.out.println(orderId);
-		
-		User user = (User)session.getAttribute("user");
-		System.out.println(user.toString());
+		System.out.println(orderId);		
 		orderForm.setId(orderId);
-		//テスト用出力
-		System.out.println(orderForm.getDestinationName());
-		System.out.println(orderForm.getDestinationEmail());
-		System.out.println(orderForm.getDestinationZipcode());
-		System.out.println(orderForm.getDestinationAddress());
-		System.out.println(orderForm.getDestinationTel());
-		System.out.println(orderForm.getDeliveryDate());
-		System.out.println(orderForm.getDeliveryTime());
-		System.out.println(orderForm.getPaymentMethod());
-		System.out.println("オーダーID=" + orderForm.getId());
-		System.out.println("タイムスタンプ=" + orderForm.getDeliveryTime());
-		System.out.println("ログインユーザー名" + user.getName());
 //	ここまで
 		/*
 		 * LocalDateTime localDateTime = LocalDateTime.now(); localDateTime =
