@@ -30,7 +30,10 @@ import jakarta.servlet.http.HttpSession;
 @Controller
 @RequestMapping("/order")
 public class OrderController {
-
+	
+	@Autowired
+	private OrderConfirmController orderConfirmController;
+	
 	@Autowired
 	private OrderConfirmController confirmController;
 
@@ -50,26 +53,27 @@ public class OrderController {
 	 */
 	@PostMapping("")
 	public String order(@Validated OrderForm orderForm, BindingResult result, Model model, String orderId) {
-		
-		System.out.println(orderId);		
 		orderForm.setId(orderId);
-//	ここまで
-		/*
-		 * LocalDateTime localDateTime = LocalDateTime.now(); localDateTime =
-		 * localDateTime.plusHours(3); Timestamp userOrderTimestamp =
-		 * orderForm.getDeliveryTime(); LocalDateTime userOrderTime =
-		 * userOrderTimestamp.toLocalDateTime(); if
-		 * (localDateTime.isAfter(userOrderTime)) { result.rejectValue("deliveryDate",
-		 * null, "今から3時間後の日時をご入力ください"); }
-		 */
-		
+		if (orderForm.getDeliveryDate() == null) {
+			model.addAttribute("deliveryDateError", "日付を入力してください");
+			return orderConfirmController.orderConfirm(Integer.parseInt(orderId),model, orderForm);
+		}
+	
+		 LocalDateTime nowDateTime = LocalDateTime.now();
+		 nowDateTime = nowDateTime.plusHours(3);
+		 LocalDateTime orderDateTime = orderForm.getDeliveryDate().toLocalDate().atStartOfDay();
+		 orderDateTime.plusHours(orderForm.getDeliveryTime());
+		 if(nowDateTime.isAfter(orderDateTime)) {
+			 model.addAttribute("deliveryDateError", "今から3時間後の日時をご入力ください");
+				return orderConfirmController.orderConfirm(Integer.parseInt(orderId),model, orderForm);
+		 }
+			
 		if (result.hasErrors()) {
 			System.out.println("result:" + result);
 			return confirmController.orderConfirm(Integer.parseInt(orderForm.getId()), model, orderForm);
 		}
 		
 		orderService.order(orderForm);
-		
 		return "order_finished";
 	}
 }

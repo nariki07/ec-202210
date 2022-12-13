@@ -55,6 +55,10 @@ public class OrderService {
 		}else if(orderForm.getPaymentMethod().equals("2")) {
 			order.setStatus(2);
 		}
+		
+		System.out.println("合計金額は" + order.getCalcTotalPrice());
+		//合計金額を挿入.
+		order.setTotalPrice(order.getCalcTotalPrice());
 		orderRepository.update(order);
 	}
 

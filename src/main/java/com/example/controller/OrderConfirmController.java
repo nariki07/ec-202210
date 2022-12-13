@@ -29,7 +29,11 @@ public class OrderConfirmController {
 	 */
 	@RequestMapping("/orderConfirm")
 	public String orderConfirm(Integer orderId, Model model, OrderForm orderForm) {
-
+		
+		if(session.getAttribute("user") == null ) {
+			return "login";
+		}
+		
 		Order confirmToOrder = new Order();
 		// オーダーIDが空だった場合、セッションからorder情報を取得して代入.
 		if (orderId == null) {

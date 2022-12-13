@@ -38,6 +38,7 @@ public class ShopCartController {
 	 */
 	@GetMapping("/showCartList")
 	private String showCartList(Model model) {
+		
 		User user = (User)session.getAttribute("user");
 		Order order = null;
 		Integer userId = (Integer)session.getAttribute("userId");

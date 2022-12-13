@@ -153,22 +153,21 @@ public class Order {
 		this.orderItemList = orderItemList;
 	}
 
-//	public int getTax(int num) {
-//
-//	}
-
 	public int getCalcTotalPrice() {
 		int itemPrice = 0;
 		for (OrderItem orderItem : this.orderItemList) {
-			if (orderItem.getSize().equals("m")) {
+			if (orderItem.getSize().equals("M")) {
 				itemPrice = orderItem.getItem().getPriceM();
+				System.out.println("オーダーアイテムの金額"+itemPrice);
 				for (OrderTopping orderTopping : orderItem.getOrderToppingList()) {
 					itemPrice += orderTopping.getTopping().getPriceM();
 				}
+				System.out.println("オーダーアイテムとトッピングの金額"+itemPrice);
 				itemPrice *= orderItem.getQuantity();
+				System.out.println("オーダーアイテムとトッピングの金額*数量"+itemPrice);
 				itemPrice *= 1.1;
 
-			} else if (orderItem.getSize().equals("l")) {
+			} else if (orderItem.getSize().equals("L")) {
 				itemPrice = orderItem.getItem().getPriceL();
 				for (OrderTopping orderTopping : orderItem.getOrderToppingList()) {
 					itemPrice += orderTopping.getTopping().getPriceL();
