@@ -24,7 +24,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * 注文情報を操作するコントローラー.
  * 
- * @author Hirabuki
+ * @author  moriharanariki
  *
  */
 @Controller

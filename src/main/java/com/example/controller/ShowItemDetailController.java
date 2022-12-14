@@ -13,7 +13,7 @@ import com.example.service.ShowItemDetailService;
 /**
  * 商品詳細を表示するControllerクラス.
  * 
- * @author kumagaimayu
+ * @author  moriharanariki
  *
  */
 @Controller

@@ -13,7 +13,7 @@ import com.example.domain.User;
 import com.example.form.InsertUserForm;
 import com.example.service.InsertUserService;
 /**
- * @author kenji.suzuki
+ * @author  moriharanariki
  *
  */
 @Controller

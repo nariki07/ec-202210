@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * ログアウト機能を制御するコントローラー.
  * 
- * @author Hirabuki
+ * @author  moriharanariki
  *
  */
 @Controller

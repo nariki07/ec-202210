@@ -142,9 +142,7 @@ public class OrderRepository {
 					+ "values(:userId,:status,:totalPrice,:orderDate,:destinationName,:destinationEmail,:destinationZipcode,:destinationAddress,:destinationTel,:deliveryTime,:paymentMethod);";
 			template.update(sql, param);
 		}
-
 		return order;
-
 	}
 
 	/**
