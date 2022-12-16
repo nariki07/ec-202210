@@ -24,7 +24,6 @@ import com.example.domain.Topping;
  * ordersテーブルを操作するリポジトリ.
  * 
  * @author moriharanariki
- * @author Hirabuki
  *
  */
 @Repository

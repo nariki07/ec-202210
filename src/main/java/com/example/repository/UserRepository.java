@@ -16,7 +16,7 @@ import com.example.domain.User;
 /**
  * usersテーブルを操作するリポジトリ.
  * 
- * @author Hirabuki
+ * @author  moriharanariki
  *
  */
 @Repository

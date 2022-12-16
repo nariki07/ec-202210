@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * 注文商品情報を表すdomainクラス.
  * 
- * @author kumagaimayu
+ * @author  moriharanariki
  *
  */
 public class OrderItem {

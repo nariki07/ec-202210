@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpSession;
 /**
  * 商品詳細を取得するServiceクラス.
  * 
- * @author kumagaimayu
+ * @author  moriharanariki
  *
  */
 @Service

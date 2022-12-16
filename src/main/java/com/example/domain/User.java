@@ -3,7 +3,7 @@ package com.example.domain;
 /**
  * ユーザ情報を表すdomainクラス.
  * 
- * @author kumagaimayu
+ * @author  moriharanariki
  *
  */
 public class User {

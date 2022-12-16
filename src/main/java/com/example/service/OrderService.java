@@ -17,7 +17,7 @@ import com.example.repository.OrderRepository;
 /**
  * 注文情報を操作するサービス.
  * 
- * @author inagakisaia
+ * @author  moriharanariki
  *
  */
 @Service

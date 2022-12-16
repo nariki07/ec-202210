@@ -11,7 +11,7 @@ import com.example.repository.UserRepository;
 /**
  * 管理者情報を操作するサービス.
  * 
- * @author Hirabuki
+ * @author  moriharanariki
  *
  */
 @Service

@@ -1,9 +1,7 @@
 package com.example.controller;
 
-import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +9,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 
-import com.example.domain.RequestCreditCardPaymentApi;
-import com.example.domain.ResponseCreditCardPaymentApi;
-import com.example.domain.User;
 import com.example.form.OrderForm;
 import com.example.service.OrderService;
 

@@ -8,7 +8,7 @@ import com.example.domain.Order;
 import com.example.repository.OrderRepository;
 
 /**
- * @author kenji.suzuki
+ * @author  moriharanariki
  *
  */
 @Service

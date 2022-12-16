@@ -3,7 +3,7 @@ package com.example.form;
 /**
  * ログイン時に使うフォーム.
  * 
- * @author Hirabuki
+ * @author  moriharanariki
  */
 public class LoginUserForm {
 
