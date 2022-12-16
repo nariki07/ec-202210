@@ -57,7 +57,7 @@ public class UserRepository {
 		}
 		return userList.get(0);
 	}
-
+	
 	/**
 	 * メールアドレスからユーザを取得する.
 	 * 

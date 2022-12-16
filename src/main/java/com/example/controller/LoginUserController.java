@@ -59,6 +59,7 @@ public class LoginUserController {
 	public String login(LoginUserForm form, Model model) {
 		
 		Order dummyOrder = null;
+		
 		// sessionに入っている仮のユーザーIDでオーダー情報を取得。
 		if(session.getAttribute("userId") != null) {
 			dummyOrder = shopCartService.showCartList((int) session.getAttribute("userId"));
@@ -66,12 +67,12 @@ public class LoginUserController {
 		
 		// フォームで受け取ったemailとパスワードで検索をかける。
 		User user = loginUserService.login(form.getEmail(), form.getPassword());
-
 		// userが空であればログイン画面に遷移させる.
 		if (user == null) {
 			model.addAttribute("errorMessage", "メールアドレス、またはパスワードが間違っています。");
 			return toLogin(form);
 		}
+		
 		session.setAttribute("user", user);
 		
 		// ログイン情報を利用してオーダーテーブルを取得.

@@ -177,20 +177,6 @@ public class OrderRepository {
 	}
 
 	/**
-	 * オーダー情報を更新します.
-	 * 
-	 * @param order
-	 * @return オーダー情報
-	 */
-	public void update2(Order order) {
-		SqlParameterSource param = new BeanPropertySqlParameterSource(order);
-
-		String updateSql = "UPDATE orders SET id=:id,user_id=:userId,status=:status,total_price=:totalPrice,order_date=:orderDate,:destinationName,:destinationEmail,destination_zipcode=:destinationZipcode,destination_address:destinationAddress,"
-				+ "destination_tel=:destinationTel,delivery_time=:deliveryTime,payment_method=:paymentMethod";
-		template.update(updateSql, param);
-	}
-
-	/**
 	 * 全件検索を行います.
 	 * 
 	 * @return

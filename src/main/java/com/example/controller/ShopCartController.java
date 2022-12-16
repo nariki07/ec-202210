@@ -49,16 +49,11 @@ public class ShopCartController {
 			order = shopCartService.showCartList(userId);
 		}
 		
-		if (order.getOrderItemList().isEmpty()) {
+		if (order == null) {
 			model.addAttribute("NoOrder", "カート内は空です。");
 		} else {
 			model.addAttribute("order", order);
 		}
-		/*
-		 * double tax = order.getCalcTotalPrice(); tax = tax / 1.1; tax = tax * 0.1;
-		 * model.addAttribute("order", order); model.addAttribute("tax", tax);
-		 * model.addAttribute("totalPrice", order.getCalcTotalPrice());
-		 */
 		return "cart_list";
 	}
 
